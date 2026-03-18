@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Deep space dark theme - always dark */
+    --background: 0.12 0.028 264;
+    --foreground: 0.92 0.01 255;
+    --card: 0.16 0.025 258;
+    --card-foreground: 0.92 0.01 255;
+    --popover: 0.18 0.025 258;
+    --popover-foreground: 0.92 0.01 255;
+    --primary: 0.65 0.2 210;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.22 0.03 258;
+    --secondary-foreground: 0.85 0.01 255;
+    --muted: 0.2 0.025 258;
+    --muted-foreground: 0.55 0.02 255;
+    --accent: 0.62 0.18 195;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.62 0.22 22;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.03 258;
+    --input: 0.2 0.03 258;
+    --ring: 0.65 0.2 210;
+    /* Golden for ratings */
+    --gold: 0.75 0.18 72;
+    --gold-dim: 0.55 0.13 72;
+    /* Chart colors */
+    --chart-1: 0.65 0.2 210;
+    --chart-2: 0.62 0.18 195;
+    --chart-3: 0.75 0.18 72;
+    --chart-4: 0.6 0.22 285;
+    --chart-5: 0.68 0.15 155;
+    /* Sidebar */
+    --sidebar: 0.1 0.025 262;
+    --sidebar-foreground: 0.85 0.01 255;
+    --sidebar-primary: 0.65 0.2 210;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.18 0.03 258;
+    --sidebar-accent-foreground: 0.92 0.01 255;
+    --sidebar-border: 0.22 0.03 258;
+    --sidebar-ring: 0.65 0.2 210;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: radial-gradient(
+        ellipse at 20% 20%,
+        oklch(0.18 0.04 260 / 0.4) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        oklch(0.14 0.035 240 / 0.3) 0%,
+        transparent 50%
+      );
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbar for space theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--primary));
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px oklch(var(--primary) / 0.15), 0 0 40px
+    oklch(var(--primary) / 0.05);
+}
+.glow-gold {
+  box-shadow: 0 0 12px oklch(var(--gold) / 0.25);
+}
+.card-glow {
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.4), 0 1px 2px
+    oklch(var(--primary) / 0.08);
+}
